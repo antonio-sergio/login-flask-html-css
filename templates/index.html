@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Store</title>
+</head>
+<body>
+   <header>
+    <span class="title">Lista de Produtos</span>
+    <form action="/create" method="post">
+    <input name="title" placeholder="Produto">
+    <input name="price" placeholder="Preço">
+    <button id="adicionar" type="submit">
+      Adicionar
+    </button>
+   </header>
+
+  <ul class="content">
+    
+    
+      {% for product in products %}
+        <li class="card">{{product['title']}} - R$ {{product['price']}} 
+          
+          <form action="/update/{{index0}}" method="POST">
+              <button>✏️</button>
+            </form>
+
+          <div class="actions">
+            <a href="/delete/{{product.id}}">❌</a>
+          </div>
+
+        </li>
+        
+      {% endfor %}
+   
+    </form>
+  </ul>
+<footer>
+<span>by antonioalves.dev</span>
+</footer>
+</body>
+</html>
+
